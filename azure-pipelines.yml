@@ -1,0 +1,20 @@
+resources:
+  repositories:
+  - repository: pipeline
+    type: git
+    name: easydevops
+    ref: refs/heads/sonar-test
+
+trigger:
+  batch: true
+  branches:
+    include:
+    - release/*
+    - master
+  paths:
+    exclude:
+    - azure-pipelines.yml
+pr: none
+
+jobs:
+- template: job-template-npm-publish.yml@pipeline
