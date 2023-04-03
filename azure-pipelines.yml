@@ -3,7 +3,7 @@ resources:
   - repository: pipeline
     type: git
     name: easydevops
-    ref: refs/heads/sonar-test
+    ref: refs/heads/master
 
 trigger:
   batch: true
