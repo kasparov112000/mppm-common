@@ -69,7 +69,7 @@ export class Validator {
     this._component = component;
   }
 
-  public rulesFor<T>(input: T, paramName: string) {
-    return new Validate<T>(input, paramName, this._component);
+  public rulesFor<T>(input: T, paramName: string, validatorResult: ValidatorResult = null) {
+    return new Validate<T>(input, paramName, this._component, validatorResult);
   }
 }
