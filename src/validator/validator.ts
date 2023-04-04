@@ -20,11 +20,16 @@ class Validate<T> {
 
   public validatorResult: ValidatorResult;
 
-  constructor(input: T, paramName: string, component: string) {
+  constructor(input: T, paramName: string, component: string, validatorResult: ValidatorResult = null) {
     this._input = input;
     this._paramName = paramName;
     this._component = component;
-    this.validatorResult = new ValidatorResult();
+    
+    if (validatorResult === null) {
+      validatorResult = new ValidatorResult();
+    } 
+    
+    this.validatorResult = validatorResult;
   }
 
   public addRules (rules: ValidatorRule<T>[]) {
