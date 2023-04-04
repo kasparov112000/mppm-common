@@ -24,7 +24,7 @@ class Validate<T> {
     this._input = input;
     this._paramName = paramName;
     this._component = component;
-    this.validatorResult = { isValid: true, errors: [] };
+    this.validatorResult = new ValidatorResult();
   }
 
   public addRules (rules: ValidatorRule<T>[]) {
@@ -37,13 +37,9 @@ class Validate<T> {
       try {
         this.validatorResult = rule.validate(this._input, this._paramName, this.validatorResult);
       } catch (err) {
-        const failure = new ValidatorFailure();
-        failure.name = this._paramName;
-        failure.value = this._input;
-        failure.errorMessage = `${rule.constructor.name} threw an error: ${err.message}`;
-
-        this.validatorResult.isValid = false;
-        this.validatorResult.errors.push(failure);
+        const errorMessage = `${rule.constructor.name} threw an error: ${err.message}`;
+        const failure = new ValidatorFailure(this._input, this._paramName, errorMessage);
+        this.validatorResult.setInvalid(failure);
       }
     });
 

@@ -1,3 +1,4 @@
+import { ValidatorFailure } from '../validatorFailure';
 import { ValidatorResult } from '../validatorResult';
 import { ValidatorRule } from '../validatorRule';
 import * as _ from 'lodash';
@@ -17,13 +18,14 @@ function isEmptyArrayCompare<T>(input: T) {
  * @returns {ValidatorResult} Validator Result object
  */
  export class IsEmptyArray<T> extends ValidatorRule<T> {
-    validate(): ValidatorResult {
-        if (isEmptyArrayCompare(this._input)) {
-            return this._validatorResult;    
+    validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult {
+        if (isEmptyArrayCompare(input)) {
+            return priorResult;    
         }
 
-        this.setInvalidResult(this.createNewFailure(`${this._paramName} is not an empty array`));
-        return this._validatorResult;
+        const errMsg = `${paramName} is not an empty array`;
+        priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
+        return priorResult;
     }
 }
 
@@ -34,12 +36,13 @@ function isEmptyArrayCompare<T>(input: T) {
  * @returns {ValidatorResult} Validator Result object
  */
  export class NotEmptyArray<T> extends ValidatorRule<T> {
-    validate(): ValidatorResult {
-        if (!isEmptyArrayCompare(this._input)) {
-            return this._validatorResult;
+    validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult {
+        if (!isEmptyArrayCompare(input)) {
+            return priorResult;
         }
 
-        this.setInvalidResult(this.createNewFailure(`${this._paramName} is an empty array`));
-        return this._validatorResult;
+        const errMsg = `${paramName} is an empty array`;
+        priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
+        return priorResult;
     }
 }

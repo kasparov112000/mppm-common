@@ -1,3 +1,4 @@
+import { ValidatorFailure } from '../validatorFailure';
 import { ValidatorResult } from '../validatorResult';
 import { ValidatorRule } from '../validatorRule';
 
@@ -24,13 +25,14 @@ export class IsBetween<T extends Number> extends ValidatorRule<T> {
         this._max = max;
     }
 
-    validate(): ValidatorResult {
-        if (isBetweenCompare(this._input, this._min, this._max)) {
-            return this._validatorResult;
+    validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult {
+        if (isBetweenCompare(input, this._min, this._max)) {
+            return priorResult;
         }
-        
-        this.setInvalidResult(this.createNewFailure(`${this._paramName} (${this._input}) is not between ${this._min} & ${this._max}`));
-        return this._validatorResult;
+
+        const errMsg = `${paramName} (${input}) is not between ${this._min} & ${this._max}`;
+        priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
+        return priorResult;
     }    
 }
 
@@ -43,12 +45,13 @@ export class IsBetween<T extends Number> extends ValidatorRule<T> {
  * @returns {ValidatorResult} Validator Result object
  */
 export class NotBetween<T extends Number> extends IsBetween<T> {
-    validate(): ValidatorResult {
-        if (!isBetweenCompare(this._input, this._min, this._max)) {
-            return this._validatorResult;
+    validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult {
+        if (!isBetweenCompare(input, this._min, this._max)) {
+            return priorResult;
         }
-        
-        this.setInvalidResult(this.createNewFailure(`${this._paramName} (${this._input}) is between ${this._min} & ${this._max}`));
-        return this._validatorResult;
+
+        const errMsg = `${paramName} (${input}) is between ${this._min} & ${this._max}`;
+        priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
+        return priorResult;
     }    
 }

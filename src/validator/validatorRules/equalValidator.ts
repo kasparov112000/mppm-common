@@ -1,3 +1,4 @@
+import { ValidatorFailure } from '../validatorFailure';
 import { ValidatorResult } from '../validatorResult';
 import { ValidatorRule } from '../validatorRule';
 
@@ -20,13 +21,14 @@ export class NotEqual<T> extends ValidatorRule<T> {
         this._value = value;
     }
 
-    validate(): ValidatorResult {
-        if (!isEqualCompare(this._input, this._value)) {
-            return this._validatorResult;
+    validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult {
+        if (!isEqualCompare(input, this._value)) {
+            return priorResult;
         }
         
-        this.setInvalidResult(this.createNewFailure(`${this._paramName} (${this._input}) is equal to ${this._value}`));
-        return this._validatorResult;
+        const errMsg = `${paramName} (${input}) is equal to ${this._value}`;
+        priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
+        return priorResult;
     }    
 }
 
@@ -38,12 +40,13 @@ export class NotEqual<T> extends ValidatorRule<T> {
  * @returns {ValidatorResult} Validator Result object
  */
  export class IsEqual<T> extends NotEqual<T> {
-    validate(): ValidatorResult {
-        if (isEqualCompare(this._input, this._value)) {
-            return this._validatorResult;
+    validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult {
+        if (isEqualCompare(input, this._value)) {
+            return priorResult;
         }
         
-        this.setInvalidResult(this.createNewFailure(`${this._paramName} (${this._input}) is not equal to ${this._value}`));
-        return this._validatorResult;
+        const errMsg = `${paramName} (${input}) is not equal to ${this._value}`;
+        priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
+        return priorResult;
     } 
 }

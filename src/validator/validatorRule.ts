@@ -2,9 +2,6 @@ import { ValidatorFailure } from './validatorFailure';
 import { ValidatorResult } from './validatorResult';
 
 export abstract class ValidatorRule<T> {
-    protected _input: T;
-    protected _paramName: string;
-    protected _validatorResult: ValidatorResult;
     protected _customErrMessage: string;
   
     public ruleName: string;
@@ -13,24 +10,21 @@ export abstract class ValidatorRule<T> {
       this._customErrMessage = customErrMessage;
     }
   
-    abstract validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult;
+    public abstract validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult;
   
-    protected setInvalidResult(failure: ValidatorFailure) {
-      this._validatorResult.isValid = false;
-      this._validatorResult.errors.push(failure);
-    }
+    // protected setInvalidResult(failure: ValidatorFailure) {
+    //   this._validatorResult.isValid = false;
+    //   this._validatorResult.errors.push(failure);
+    // }
   
-    protected createNewFailure(errorMessage: string): ValidatorFailure {
-      const failure = new ValidatorFailure();
-      failure.name = this._paramName;
-      failure.value = this._input;
-  
-      if (this._customErrMessage === '') {
-        failure.errorMessage = errorMessage;
-      } else {
-        failure.errorMessage = this._customErrMessage;
+    protected createNewFailure(value: any, name: string, errorMessage: string): ValidatorFailure {
+      let errMsg = errorMessage;
+
+      if (this._customErrMessage !== '') {
+        errMsg = this._customErrMessage;
       }
-  
+      
+      const failure = new ValidatorFailure(value, name, errMsg);
       return failure;
     }
 }

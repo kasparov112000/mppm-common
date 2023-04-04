@@ -1,9 +1,10 @@
+import { ValidatorFailure } from '../validatorFailure';
 import { ValidatorResult } from '../validatorResult';
 import { ValidatorRule } from '../validatorRule';
 import * as mongodb from 'mongodb';
 
 function isMongoIDCompare<T extends string>(input: T) {
-    return (String)(new mongodb.ObjectId(this._input)) === this._input;
+    return (String)(new mongodb.ObjectId(input)) === input;
 }
 
 /**
@@ -13,13 +14,14 @@ function isMongoIDCompare<T extends string>(input: T) {
  * @returns {ValidatorResult} Validator Result object
  */
  export class IsMongoID<T extends string> extends ValidatorRule<T> {
-    validate(): ValidatorResult {
+    validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult {
         if (isMongoIDCompare) {
-            return this._validatorResult;
+            return priorResult;
         }
         
-        this.setInvalidResult(this.createNewFailure(`${this._paramName} (${this._input}) is invalid MongoDB ID`));
-        return this._validatorResult;
+        const errMsg = `${paramName} (${input}) is invalid MongoDB ID`;
+        priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
+        return priorResult;
     }    
 }
 
@@ -30,12 +32,13 @@ function isMongoIDCompare<T extends string>(input: T) {
  * @returns {ValidatorResult} Validator Result object
  */
  export class NotMongoID<T extends string> extends ValidatorRule<T> {
-    validate(): ValidatorResult {
+    validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult {
         if (!isMongoIDCompare) {
-            return this._validatorResult;
+            return priorResult;
         }
         
-        this.setInvalidResult(this.createNewFailure(`${this._paramName} (${this._input}) is a valid MongoDB ID`));
-        return this._validatorResult;
+        const errMsg = `${paramName} (${input}) is a valid MongoDB ID`;
+        priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
+        return priorResult;
     }    
 }

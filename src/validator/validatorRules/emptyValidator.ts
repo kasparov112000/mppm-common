@@ -1,3 +1,4 @@
+import { ValidatorFailure } from '../validatorFailure';
 import { ValidatorResult } from '../validatorResult';
 import { ValidatorRule } from '../validatorRule';
 import * as _ from 'lodash';
@@ -19,13 +20,14 @@ function isEmptyCompare<T>(input: T | string) {
  * @returns {ValidatorResult} Validator Result object
  */
 export class IsEmpty<T> extends ValidatorRule<T | string> {
-    validate(): ValidatorResult {
-        if (isEmptyCompare(this._input)) {
-            return this._validatorResult;
+    validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult {
+        if (isEmptyCompare(input)) {
+            return priorResult;
         }
         
-        this.setInvalidResult(this.createNewFailure(`${this._paramName} is empty`));
-        return this._validatorResult;
+        const errMsg = `${paramName} is empty`;
+        priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
+        return priorResult;
     }    
 }
 
@@ -36,12 +38,13 @@ export class IsEmpty<T> extends ValidatorRule<T | string> {
  * @returns {ValidatorResult} Validator Result object
  */
  export class NotEmpty<T> extends ValidatorRule<T | string> {
-    validate(): ValidatorResult {
-        if (!isEmptyCompare(this._input)) {
-            return this._validatorResult;
+    validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult {
+        if (!isEmptyCompare(input)) {
+            return priorResult;
         }
         
-        this.setInvalidResult(this.createNewFailure(`${this._paramName} is empty`));
-        return this._validatorResult;
+        const errMsg = `${paramName} is empty`;
+        priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
+        return priorResult;
     }    
 }
