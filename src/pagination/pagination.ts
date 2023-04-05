@@ -1,5 +1,6 @@
 import { isEmpty } from 'lodash';
 import { Validator } from '../validator/validator';
+import { ValidatorParameter } from '../validator/validatorParameter';
 import * as validatorRules from '../validator/validatorRules/validatorRules'
 
 export class PaginatedData {
@@ -42,7 +43,8 @@ export default class Pagination {
   }
 
   public async handlePaginationSortAndFilter(collectionName, noSQLModel, paginationParameters: PaginationParameters, db, query = {}) {
-    this._validator.rulesFor<string>(collectionName, 'collectionName').addRules([new validatorRules.NotEmpty()]).validateAndThrow();
+    const collectionNameValidator = new ValidatorParameter<string>(collectionName, 'collectionName').addRules([new validatorRules.NotEmpty()]);
+    this._validator.validateAndThrow([collectionNameValidator]);
     
     let { pageNum, pageSize, sortBy, sortOrder, filterBy, filterValue, languageCode } = paginationParameters;
     if (isEmpty(languageCode)) {
@@ -56,7 +58,8 @@ export default class Pagination {
       const sortByModelReference = noSQLModel.schema.path(sortBy);
       
       const errMsg = 'sortyBy value is invalid';
-      this._validator.rulesFor(sortByModelReference, 'sortByModelReference').addRules([new validatorRules.NotNull(errMsg), new validatorRules.NotEmpty(errMsg)]).validateAndThrow();
+      const sortByModelRefValidator = new ValidatorParameter(sortByModelReference, 'sortByModelReference').addRules([new validatorRules.NotNull(errMsg), new validatorRules.NotEmpty(errMsg)]);
+      this._validator.validateAndThrow([sortByModelRefValidator]);
     }
     if (isEmpty(sortOrder)) {
       sortOrder = 'asc';
@@ -65,7 +68,8 @@ export default class Pagination {
       const isSortOrderValid = sortOrder === 'asc' || sortOrder === 'desc';
 
       const errMsg = 'sortOrder value should be either desc or asc';
-      this._validator.rulesFor(isSortOrderValid, 'isSortOrderValid').addRules([new validatorRules.NotNull(errMsg), new validatorRules.IsEqual(true, errMsg)]).validateAndThrow();
+      const sortOrderValidator = new ValidatorParameter(isSortOrderValid, 'isSortOrderValid').addRules([new validatorRules.NotNull(errMsg), new validatorRules.IsEqual(true, errMsg)]);
+      this._validator.validateAndThrow([sortOrderValidator]);
     }
     if (!isEmpty(filterBy) && !isEmpty(filterValue)) {
       filterBy = filterBy.trim();
@@ -73,7 +77,8 @@ export default class Pagination {
       const filterByModelReference = noSQLModel.schema.path(filterBy);
       
       const errMsg = 'filterBy value is invalid';
-      this._validator.rulesFor(filterByModelReference, 'filterByModelReference').addRules([new validatorRules.NotNull(errMsg), new validatorRules.NotEmpty(errMsg)]).validateAndThrow();
+      const filterByRefValidator = new ValidatorParameter(filterByModelReference, 'filterByModelReference').addRules([new validatorRules.NotNull(errMsg), new validatorRules.NotEmpty(errMsg)]);
+      this._validator.validateAndThrow([filterByRefValidator]);
       
       // eslint-disable-next-line dot-notation
       const fieldType = filterByModelReference['instance'];

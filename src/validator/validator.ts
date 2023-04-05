@@ -1,66 +1,8 @@
 import * as _ from 'lodash';
 import ValidatorError from '../models/custom-errors/validatorError';
-import { ValidatorRule } from './validatorRule';
 import { ValidatorResult } from './validatorResult';
 import { ValidatorFailure } from './validatorFailure';
-
-export class ValidatorOptions {
-  public message?: any;
-  public status?: number;
-  public errorResponseObject?: any;
-  public throwOnFail?: boolean = true;
-}
-
-class Validate<T> {
-  private _component: string;
-  private _input: T;
-  private _paramName: string;
-
-  private _rules: ValidatorRule<T>[];
-
-  public validatorResult: ValidatorResult;
-
-  constructor(input: T, paramName: string, component: string, validatorResult: ValidatorResult = null) {
-    this._input = input;
-    this._paramName = paramName;
-    this._component = component;
-    
-    if (validatorResult === null) {
-      validatorResult = new ValidatorResult();
-    } 
-    
-    this.validatorResult = validatorResult;
-  }
-
-  public addRules (rules: ValidatorRule<T>[]) {
-    this._rules.push(...rules);
-    return this;
-  }
-
-  public validate() {
-    this._rules.forEach(rule => {
-      try {
-        this.validatorResult = rule.validate(this._input, this._paramName, this.validatorResult);
-      } catch (err) {
-        const errorMessage = `${rule.constructor.name} threw an error: ${err.message}`;
-        const failure = new ValidatorFailure(this._input, this._paramName, errorMessage);
-        this.validatorResult.setInvalid(failure);
-      }
-    });
-
-    return this;
-  }
-
-  public validateAndThrow () {
-    this.validate();
-
-    if (!this.validatorResult.isValid) {
-      throw new ValidatorError(this._component, `${this._paramName} has thrown one or more validation errors`, this.validatorResult.errors);
-    }
-
-    return this;
-  }
-}
+import { ValidatorParameter } from './validatorParameter';
 
 export class Validator {
   private _component: string;
@@ -69,7 +11,48 @@ export class Validator {
     this._component = component;
   }
 
-  public rulesFor<T>(input: T, paramName: string, validatorResult: ValidatorResult = null) {
-    return new Validate<T>(input, paramName, this._component, validatorResult);
+  /**
+   * Validates an Array of ValidatorParameters (FIFO) and outputs a ValidatorResult object.  The optional priorResult can be provided.
+   * 
+   * @param {ValidatorParameter<any>[]} validatorParameters - Parameters to be validated
+   * @param {ValidatorResult} priorResult (Optional) - If provided, will update this object with errors and isvalid status instead of creating a new result object
+   * @returns {ValidatorResult} 
+   */
+  public validate(validatorParameters: ValidatorParameter<any>[], priorResult: ValidatorResult = null): ValidatorResult {
+    if (priorResult === null) {
+      priorResult = new ValidatorResult();
+    }
+
+    let validatorResult = priorResult;
+
+    validatorParameters.forEach(validatorParameter => {
+      validatorParameter.rules.forEach(rule => {
+        try {
+          validatorResult = rule.validate(validatorParameter.input, validatorParameter.paramName, validatorResult);
+        } catch (err) {
+          const errMsg = `${rule.constructor.name} threw an error: ${err.message}`;
+          const failure = new ValidatorFailure(validatorParameter.input, validatorParameter.paramName, errMsg);
+          validatorResult.setInvalid(failure);
+        }
+      })
+    });
+
+    return validatorResult;
+  }
+
+  /**
+   * Validates an Array of ValidatorParameters (FIFO) and outputs a ValidatorResult object or throws an error after validation is complete.  The optional priorResult can be provided.
+   * 
+   * @param {ValidatorParameter<any>[]} validatorParameters - Parameters to be validated
+   * @param {ValidatorResult} priorResult (Optional) - If provided, will update this object with errors and isvalid status instead of creating a new result object
+   * @returns {ValidatorResult} 
+   */
+  public validateAndThrow(validatorParameters: ValidatorParameter<any>[], priorResult: ValidatorResult = null) {
+    const validatorResult = this.validate(validatorParameters, priorResult);
+
+    if (!validatorResult.isValid) {
+      const paramNames = validatorParameters.map(vp => vp.paramName).toString();
+      throw new ValidatorError(this._component, `One or more of the following parameters failed to validate: ${paramNames}`, validatorResult.errors);
+    }
   }
 }
