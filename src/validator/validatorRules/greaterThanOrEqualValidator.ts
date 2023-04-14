@@ -16,6 +16,11 @@ function isGreaterThanOrEqualCompare<T extends Number> (input: T, value: T) {
  export class IsGreaterThanOrEqual<T extends Number> extends ValidatorRule<T> {
     protected _value: T;
 
+    constructor (value: T, customErrMessage = '') {
+        super(customErrMessage);
+        this._value = value;
+    }
+
     validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult {
         if (isGreaterThanOrEqualCompare(input, this._value)) {
             return priorResult;
