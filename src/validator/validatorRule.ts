@@ -18,4 +18,18 @@ export abstract class ValidatorRule<T> {
      * @param {ValidatorResult} priorResult Result object to update with possible errors
      */
     public abstract validate(input: T, paramName: string, priorResult: ValidatorResult): ValidatorResult;
+
+    /**
+     * Will return the customErrMessage defined in the constructor if it exists, or the err message passed to it
+     * 
+     * @param {string} err String to return if no customErrMessage was set in the constructor 
+     * @returns {string} error message
+     */
+    protected getErrorMessage(err: string) {
+      if (![null, undefined, ''].includes(this._customErrMessage)) {
+        return this._customErrMessage
+      }
+
+      return err;
+    }
 }

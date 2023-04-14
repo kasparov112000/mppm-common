@@ -23,7 +23,7 @@ function isEmptyArrayCompare<T>(input: T) {
             return priorResult;    
         }
 
-        const errMsg = `${paramName} is not an empty array`;
+        const errMsg = this.getErrorMessage(`${paramName} is not an empty array`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     }
@@ -41,7 +41,7 @@ function isEmptyArrayCompare<T>(input: T) {
             return priorResult;
         }
 
-        const errMsg = `${paramName} is an empty array`;
+        const errMsg = this.getErrorMessage(`${paramName} is an empty array`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     }

@@ -25,7 +25,7 @@ export class IsEmpty<T> extends ValidatorRule<T | string> {
             return priorResult;
         }
         
-        const errMsg = `${paramName} is empty`;
+        const errMsg = this.getErrorMessage(`${paramName} is empty`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     }    
@@ -43,7 +43,7 @@ export class IsEmpty<T> extends ValidatorRule<T | string> {
             return priorResult;
         }
         
-        const errMsg = `${paramName} is empty`;
+        const errMsg = this.getErrorMessage(`${paramName} is empty`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     }    

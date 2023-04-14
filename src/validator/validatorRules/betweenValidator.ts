@@ -30,7 +30,7 @@ export class IsBetween<T extends Number> extends ValidatorRule<T> {
             return priorResult;
         }
 
-        const errMsg = `${paramName} (${input}) is not between ${this._min} & ${this._max}`;
+        const errMsg = this.getErrorMessage(`${paramName} (${input}) is not between ${this._min} & ${this._max}`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     }    
@@ -50,7 +50,7 @@ export class NotBetween<T extends Number> extends IsBetween<T> {
             return priorResult;
         }
 
-        const errMsg = `${paramName} (${input}) is between ${this._min} & ${this._max}`;
+        const errMsg = this.getErrorMessage(`${paramName} (${input}) is between ${this._min} & ${this._max}`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     }    
