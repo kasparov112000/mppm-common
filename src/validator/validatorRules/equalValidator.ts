@@ -26,7 +26,7 @@ export class NotEqual<T> extends ValidatorRule<T> {
             return priorResult;
         }
         
-        const errMsg = `${paramName} (${input}) is equal to ${this._value}`;
+        const errMsg = this.getErrorMessage(`${paramName} (${input}) is equal to ${this._value}`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     }    
@@ -45,7 +45,7 @@ export class NotEqual<T> extends ValidatorRule<T> {
             return priorResult;
         }
         
-        const errMsg = `${paramName} (${input}) is not equal to ${this._value}`;
+        const errMsg = this.getErrorMessage(`${paramName} (${input}) is not equal to ${this._value}`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     } 

@@ -26,7 +26,7 @@ function isGreaterThanOrEqualCompare<T extends Number> (input: T, value: T) {
             return priorResult;
         }
         
-        const errMsg = `${paramName} (${input}) is not greater than or equal to ${this._value}`;
+        const errMsg = this.getErrorMessage(`${paramName} (${input}) is not greater than or equal to ${this._value}`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     }    
@@ -45,7 +45,7 @@ function isGreaterThanOrEqualCompare<T extends Number> (input: T, value: T) {
             return priorResult;
         }
         
-        const errMsg = `${paramName} (${input}) is greater than or equal to ${this._value}`;
+        const errMsg = this.getErrorMessage(`${paramName} (${input}) is greater than or equal to ${this._value}`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     }    

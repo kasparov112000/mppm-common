@@ -18,7 +18,7 @@ function isNullCompare<T>(input: T) {
             return priorResult;
         }
         
-        const errMsg = `${paramName} is null or undefined`;
+        const errMsg = this.getErrorMessage(`${paramName} is null or undefined`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     }    
@@ -36,7 +36,7 @@ function isNullCompare<T>(input: T) {
             return priorResult;
         }
         
-        const errMsg = `${paramName} is not null or undefined`;
+        const errMsg = this.getErrorMessage(`${paramName} is not null or undefined`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     }

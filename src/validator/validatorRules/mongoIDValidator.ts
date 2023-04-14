@@ -19,7 +19,7 @@ function isMongoIDCompare<T extends string>(input: T) {
             return priorResult;
         }
         
-        const errMsg = `${paramName} (${input}) is invalid MongoDB ID`;
+        const errMsg = this.getErrorMessage(`${paramName} (${input}) is invalid MongoDB ID`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     }    
@@ -37,7 +37,7 @@ function isMongoIDCompare<T extends string>(input: T) {
             return priorResult;
         }
         
-        const errMsg = `${paramName} (${input}) is a valid MongoDB ID`;
+        const errMsg = this.getErrorMessage(`${paramName} (${input}) is a valid MongoDB ID`);
         priorResult.setInvalid(new ValidatorFailure(input, paramName, errMsg));
         return priorResult;
     }    
