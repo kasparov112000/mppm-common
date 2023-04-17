@@ -3,6 +3,8 @@ import ValidatorError from '../models/custom-errors/validatorError';
 import { ValidatorResult } from './validatorResult';
 import { ValidatorFailure } from './validatorFailure';
 import { ValidatorParameter } from './validatorParameter';
+import ValidatorHttpError from '../models/custom-errors/validatorHTTPError';
+import { httpStatusCode } from '../http/httpStatusCodes';
 
 export class Validator {
   private _component: string;
@@ -47,12 +49,12 @@ export class Validator {
    * @param {ValidatorResult} priorResult (Optional) - If provided, will update this object with errors and isvalid status instead of creating a new result object
    * @returns {ValidatorResult} 
    */
-  public validateAndThrow(validatorParameters: ValidatorParameter<any>[], priorResult: ValidatorResult = null) {
+  public validateAndThrow(validatorParameters: ValidatorParameter<any>[], priorResult: ValidatorResult = null, httpStatus = httpStatusCode.BadRequest) {
     const validatorResult = this.validate(validatorParameters, priorResult);
 
     if (!validatorResult.isValid) {
       const paramNames = validatorParameters.map(vp => vp.paramName).toString();
-      throw new ValidatorError(this._component, `One or more of the following parameters failed to validate: ${paramNames}`, validatorResult.errors);
+      throw new ValidatorHttpError(this._component, httpStatus, `One or more of the following parameters failed to validate: ${paramNames}`, validatorResult.errors);
     }
   }
 }
