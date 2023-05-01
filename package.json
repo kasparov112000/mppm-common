@@ -1,6 +1,6 @@
 {
   "name": "@mppm/mppm-common",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "MPPM Common Library",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -35,8 +35,10 @@
     "axios": "^0.26.1",
     "express": "^4.17.3",
     "express-correlation-id": "^2.0.1",
+    "express-jsdoc-swagger": "^1.8.0",
     "mongoose": "^5.13.0",
     "rfc6902": "^5.0.1",
+    "swagger-ui-express": "^4.6.2",
     "yamljs": "^0.3.0"
   }
 }
