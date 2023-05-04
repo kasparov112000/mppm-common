@@ -15,7 +15,9 @@ export class ExpressResponseHandlerService {
 
       const msg = `${message} - ${responseMessage}`;
 
-      this._logger.error({ msg, ...validatorFailures });
+      const correlationId = '';
+
+      this._logger.error({ component, message: { msg, ...validatorFailures }, correlationId });
       return res.status(status).send({ message: `${component}: ${msg}`, code: 'error', ...validatorFailures });
     }
 }
