@@ -87,6 +87,10 @@ export default class CoverageCalculation {
             const pct = value / totalGFSHours;
 
             const stateToAdd = statusToState[snapshot.status];
+            if ([null, undefined].includes(stateToAdd)) {
+                return;
+            }
+            
             hoursByState[stateToAdd].value += value;
             hoursByState[stateToAdd].pct += pct;
         })
