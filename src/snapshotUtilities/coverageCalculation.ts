@@ -83,14 +83,14 @@ export default class CoverageCalculation {
         }
 
         snapshots.forEach(snapshot => {
-            const value = snapshot.projectHours.reduce((sum, current) => (sum + current), 0);
-            const pct = value / totalGFSHours;
+            const value = (snapshot.projectHours.reduce((sum, current) => (sum + current), 0)) | 0;
+            const pct = (value / totalGFSHours) | 0;
 
             const stateToAdd = statusToState[snapshot.status];
             if ([null, undefined].includes(stateToAdd)) {
                 return;
             }
-            
+
             hoursByState[stateToAdd].value += value;
             hoursByState[stateToAdd].pct += pct;
         })
