@@ -12,6 +12,6 @@ interface IEmployee {
     segment: string;
     employeeStatus: string;
     employeeStatusCode: string;
-    IsRelationshipLeader: boolean;
-    IsTalentConsultant: boolean;
+    isRelationshipLeader: boolean;
+    isTalentConsultant: boolean;
   }
