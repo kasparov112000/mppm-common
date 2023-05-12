@@ -11,4 +11,7 @@ interface IEmployee {
     managementLevel: string;
     segment: string;
     employeeStatus: string;
+    employeeStatusCode: string;
+    IsRelationshipLeader: boolean;
+    IsTalentConsultant: boolean;
   }
