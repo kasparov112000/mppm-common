@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-interface IEmployee {
+export interface IEmployee {
     _id?: mongoose.Schema.Types.ObjectId;
     workdayId: string;
     partyId: string;
