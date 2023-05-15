@@ -19,7 +19,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "readyforpublish": "npm run build"
+    "readyforpublish": "npm run build",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "express": "^4.17.3",
     "express-correlation-id": "^2.0.1",
     "express-jsdoc-swagger": "^1.8.0",
+    "husky": "^7.0.4",
     "mongoose": "^6.6.1",
     "rfc6902": "^5.0.1",
     "swagger-ui-express": "^4.6.2",
