@@ -1,22 +1,10 @@
 import { MicroserviceConnection } from "../models/contracts/microservice";
 
-const collectionNames = { 
-    employees: 'mockEmployees'
-}
-
 const microservices = {
-    systemSettings: new MicroserviceConnection('http://system-settings', 3011, 'system-settings')
+    systemSettings: new MicroserviceConnection('http://system-settings', 3011, 'system-settings'),
+    employees: new MicroserviceConnection('http://employees', 3004, 'employees', { byPartyId: 'byPartyId', byName: 'byName' }),
 }
-
-enum statusNameCds {
-    active= 'A',
-    unpaidLeaveOfAbsence= 'L',
-    suspended= 'S',
-    paidLeaveOfAbsence= 'P'
-  }
 
 export {
-    microservices,
-    collectionNames,
-    statusNameCds
+    microservices
 };

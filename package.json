@@ -1,6 +1,6 @@
 {
   "name": "@mppm/mppm-common",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "MPPM Common Library",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -19,7 +19,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "readyforpublish": "npm run build"
+    "readyforpublish": "npm run build",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "husky": "^7.0.4",
     "typescript": "^4.6.3"
   },
   "dependencies": {
