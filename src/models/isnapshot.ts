@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
+import { IHistory } from "./contracts/history";
 import { StatusNamesEnum, TypeNamesEnum } from "./enums";
 import { StatusDates } from "./statusDates";
 
-export interface ISnapshot {
+export interface ISnapshot extends IHistory {
     _id?: mongoose.Schema.Types.ObjectId;
     name: string;
     revieweePartyID: string;
@@ -16,8 +17,8 @@ export interface ISnapshot {
     performanceYear?: number;
     statusDates?: StatusDates;
     snapshotType?: TypeNamesEnum;
-    createdBy?: string;
-    createdDate?: Date;
-    lastUpdatedBy?: string;
-    lastUpdatedDate?: Date;
+    createdBy: string;
+    createdDate: Date;
+    lastUpdatedBy: string;
+    lastUpdatedDate: Date;
   }
