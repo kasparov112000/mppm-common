@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 
-export type HistoryModel<T extends HistoryDocument> = {
-    _id?: mongoose.ObjectId,
+export type HistoryModel<T extends IHistory> = {
+    _id?: mongoose.Schema.Types.ObjectId,
     ref: string,
     updatedDate: Date,
     updatedBy: string,
@@ -9,8 +9,8 @@ export type HistoryModel<T extends HistoryDocument> = {
     newValue: T
 }
 
-export type HistoryDocument = {
-    _id: mongoose.ObjectId,
+export interface IHistory {
+    _id?: mongoose.Schema.Types.ObjectId,
     lastUpdatedDate: Date,
     lastUpdatedBy: string
 }

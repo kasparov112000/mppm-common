@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { HistoryDocument, HistoryModel } from '../models/contracts/history';
+import { IHistory, HistoryModel } from '../models/contracts/history';
 
 export class HistorianDBService {
     private _historyCollection: string;
@@ -10,7 +10,7 @@ export class HistorianDBService {
         this._historyCollection = historyCollection;
     }
 
-    async createHistory<T extends HistoryDocument>(histDoc: HistoryModel<T>) {
+    async createHistory<T extends IHistory>(histDoc: HistoryModel<T>) {
         return await this._dbConnection.models[this._historyCollection].create(histDoc);
     }
 
