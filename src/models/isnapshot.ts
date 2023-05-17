@@ -1,7 +1,8 @@
-import mongoose from "mongoose";
-import { IHistory } from "./contracts/history";
-import { StatusNamesEnum, TypeNamesEnum } from "./enums";
-import { StatusDates } from "./statusDates";
+import mongoose from 'mongoose';
+import { IHistory } from './contracts/history';
+import { StatusNamesEnum, TypeNamesEnum } from './enums';
+import { IWorkdayEmployee } from './iworkdayEmployee';
+import { StatusDates } from './statusDates';
 
 export interface ISnapshot extends IHistory {
     _id?: mongoose.Schema.Types.ObjectId;
@@ -17,6 +18,7 @@ export interface ISnapshot extends IHistory {
     performanceYear?: number;
     statusDates?: StatusDates;
     snapshotType?: TypeNamesEnum;
+    workdayEmployee?: IWorkdayEmployee;
     createdBy: string;
     createdDate: Date;
     lastUpdatedBy: string;
