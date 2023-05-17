@@ -18,7 +18,7 @@ export class BullService implements IMessagingService {
 
   public async registerQueue(queueName: string) {
     // register queue
-    if (!isEmpty(this._queue[queueName])) {
+    if (isEmpty(this._queue[queueName])) {
       this._queue[queueName] = new Queue(queueName, { connection: this._redisOptions })
     }
   }
