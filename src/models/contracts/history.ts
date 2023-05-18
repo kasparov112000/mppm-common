@@ -12,5 +12,6 @@ export type HistoryModel<T extends IHistory> = {
 export interface IHistory {
     _id?: mongoose.Schema.Types.ObjectId,
     lastUpdatedDate: Date,
-    lastUpdatedBy: string
+    lastUpdatedBy: string,
+    version: number
 }
