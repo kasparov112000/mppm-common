@@ -14,10 +14,9 @@ export class Historian {
     }
 
     public async createDocumentHistory<T extends IHistory>(prevDoc: T, newDoc: T) {
-        const oldDocValidator = new ValidatorParameter(prevDoc, 'prevDoc').addRules([new Rules.NotNull(), new Rules.NotEmpty()]);
         const newDocValidator = new ValidatorParameter(newDoc, 'newDoc').addRules([new Rules.NotNull(), new Rules.NotEmpty()]);
 
-        this._validator.validateAndThrow([oldDocValidator, newDocValidator]);
+        this._validator.validateAndThrow([newDocValidator]);
 
         const historyDoc: HistoryModel<T> = {
             ref: prevDoc._id?.toString(),
@@ -35,5 +34,13 @@ export class Historian {
         this._validator.validateAndThrow([refIdValidator]);
 
         return await this._db.getAllHistory(refId);
+    }
+
+    public async getHistoryByVersion(refId: string, version: number): Promise<HistoryModel<any>> {
+        const refIdValidator = new ValidatorParameter(refId, 'history document reference id').addRules([new Rules.NotNull(), new Rules.NotEmpty()]);
+        const versionValidator = new ValidatorParameter(version, 'history version').addRules([new Rules.NotNull(), new Rules.IsGreaterThanOrEqual(1)]);
+        this._validator.validateAndThrow([refIdValidator, versionValidator]);
+
+        return await this._db.getHistoryByVersion(refId, version);
     }
 }

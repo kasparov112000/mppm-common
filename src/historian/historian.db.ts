@@ -18,4 +18,9 @@ export class HistorianDBService {
         const find = { ref: refId };
         return await this._dbConnection.models[this._historyCollection].find(find).lean();
     }
+
+    async getHistoryByVersion(refId: string, version: number): Promise<HistoryModel<any>> {
+        const allHistory = await this.getAllHistory(refId);
+        return allHistory.find(h => h.newValue.version === version);
+    }
 }
