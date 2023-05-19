@@ -2,6 +2,8 @@ import { StatusNamesEnum } from "./enums";
 
 export interface IBreakdown {
     totalHours: number,
+    totalInitiated: number,
+    totalAcknowledged: number,
     [StatusNamesEnum.acknowledged]: BreakdownElement,
     [StatusNamesEnum.review]: BreakdownElement,
 }
@@ -16,6 +18,12 @@ export interface IInitiateSnapshotBreakdown extends IBreakdown {
     total: BreakdownElement,
     [StatusNamesEnum.draft]: BreakdownElement,
     notCovered: BreakdownElement
+}
+
+export type CountByState = {
+    [StatusNamesEnum.acknowledged]: number,
+    [StatusNamesEnum.draft]: number,
+    [StatusNamesEnum.initiated]: number
 }
 
 export type HoursByState = {
