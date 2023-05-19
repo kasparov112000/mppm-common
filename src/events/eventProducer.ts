@@ -10,11 +10,11 @@ export abstract class EventProducer<T> {
         this._messagingService.registerQueue(queueName);
     }
 
-    public queueEvent(data) {
+    public async queueEvent(data: any) {
         const event = this.createEventContext(data);
         event.queueName = this._queueName;
-        this._messagingService.addJob(event);
+        return await this._messagingService.addJob(event);
     }
 
-    public abstract createEventContext(data): EventModel<T>;
+    public abstract createEventContext(data: any): EventModel<T>;
 }
