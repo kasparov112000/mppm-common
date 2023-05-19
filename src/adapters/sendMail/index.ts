@@ -1,6 +1,6 @@
 import { INotificationsConfig } from "../../models/inotificationsConfig";
+import * as sendGridMail from '@sendgrid/mail'
 
-const sendGridMail = require('@sendgrid/mail');
 sendGridMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export class SendMailAdapter {
