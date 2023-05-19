@@ -8,6 +8,9 @@ export interface IReviewerResponse {
 }
 
 export type ReviewerAnswer = {
+    sectionIndex: number,
+    categoryIndex: number,
     questionId: string,
-    answerIndex: number
+    answerId: string,
+    answerText: string
 }
