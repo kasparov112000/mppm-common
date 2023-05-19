@@ -5,7 +5,7 @@ export class SendMailAdapter {
 
     private _sendgridFromEmail: string;
 
-    constructor (sendgridApiKey: string, sendgridFromEmail){
+    constructor (sendgridApiKey: string, sendgridFromEmail: string){
         sendGridMail.setApiKey(sendgridApiKey);
         this._sendgridFromEmail = sendgridFromEmail;
     }
