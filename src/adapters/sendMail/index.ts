@@ -1,6 +1,6 @@
 import * as sendGridMail from '@sendgrid/mail'
 
-export class SendMailAdapter {
+export class SendGridEmailAdapter {
 
     private _sendgridFromEmail: string;
 
