@@ -137,7 +137,7 @@ export default class CoverageCalculation {
             ]
         }
 
-        [StatusNamesEnum.acknowledged, StatusNamesEnum.draft, StatusNamesEnum.initiated].forEach(status => {
+        Object.keys(stateFilters).forEach(status => {
             countByState[status] = snapshots.filter(snapshot => stateFilters[status].includes(snapshot.status)).length;
         });
 
