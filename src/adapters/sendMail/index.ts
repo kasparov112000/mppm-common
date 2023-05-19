@@ -1,4 +1,3 @@
-import { INotificationsConfig } from "../../models/inotificationsConfig";
 import * as sendGridMail from '@sendgrid/mail'
 
 export class SendMailAdapter {
@@ -10,15 +9,16 @@ export class SendMailAdapter {
         this._sendgridFromEmail = sendgridFromEmail;
     }
 
-    async usingTemplate(toEmail: string, notificationTemplate: INotificationsConfig) {
-        (async () => 
-        { 
-            await sendGridMail.send({
-                to: `${toEmail}`,
-                from: `${this._sendgridFromEmail}`,
-                subject: `${notificationTemplate.subjectLine}`,
-                html: `${notificationTemplate.body}`,
+    async sendEmail(toList: string[], ccList: string[], subjectLine: string, body:string): Promise<number> {
+        return await sendGridMail.sendMultiple({
+            to: toList,
+            cc: ccList,
+            from: this._sendgridFromEmail,
+            subject: subjectLine,
+            html: body,
+            })
+            .then( response => {  
+                return response[0].statusCode;
             }); 
-        })();
-      }
+        };
 }
