@@ -18,10 +18,8 @@ export class Historian {
 
         this._validator.validateAndThrow([newDocValidator]);
 
-        const refId = prevDoc?._id ?? newDoc._id;
-
         const historyDoc: HistoryModel<T> = {
-            ref: refId.toString(),
+            ref: newDoc._id?.toString(),
             updatedDate: newDoc.lastUpdatedDate,
             updatedBy: newDoc.lastUpdatedBy,
             prevValue: prevDoc,
