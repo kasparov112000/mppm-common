@@ -5,6 +5,10 @@ export interface IReviewerResponse {
     snapshotId: mongoose.Schema.Types.ObjectId;
     templateId: mongoose.Schema.Types.ObjectId;
     questionsAnswers: ReviewerAnswer[];
+    createdBy: string;
+    createdDate: Date;
+    lastUpdatedBy: string;
+    lastUpdatedDate: Date;
 }
 
 export type ReviewerAnswer = {
