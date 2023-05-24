@@ -13,6 +13,6 @@ export const SnapshotStatuses = {
     [StatusNamesEnum.shared]: { name: StatusNamesEnum.shared, displayText: "Shared", sortOrder: 0 } as SnapshotStatus,
     [StatusNamesEnum.returnedReviewee]: { name: StatusNamesEnum.returnedReviewee, displayText: "Returned to reviewee", sortOrder: 1 } as SnapshotStatus,
     [StatusNamesEnum.returnedReviewer]: { name: StatusNamesEnum.returnedReviewer, displayText: "Returned to reviewer", sortOrder: 10 } as SnapshotStatus,
-    [StatusNamesEnum.acknowledged]: { name: StatusNamesEnum.acknowledged, displayText: "Acknowledged", sortOrder: 100 } as SnapshotStatus,
+    [StatusNamesEnum.acknowledged]: { name: StatusNamesEnum.acknowledged, displayText: "Acknowledged", sortOrder: 10 } as SnapshotStatus,
     [StatusNamesEnum.review]: { name: StatusNamesEnum.review, displayText: "In review", sortOrder: 10 } as SnapshotStatus
 }
