@@ -1,8 +1,9 @@
 import { IMessagingService } from './iMessagingService';
 export abstract class EventConsumer {
-  public _messagingService: IMessagingService;
+  private _messagingService: IMessagingService;
   constructor(messagingService: IMessagingService, queueName: string) {
     this._messagingService = messagingService;
+    this.processMessage = this.processMessage.bind(this);
     this._messagingService.registerWorker(queueName, this.processMessage);
   }
 
