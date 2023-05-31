@@ -13,12 +13,6 @@ export interface IEmployee {
     segment: string;
     employeeStatus: string;
     employeeStatusCode: string;
-    relationshipLeader: string;
-    relationshipLeaderFirstName: string;
-    relationshipLeaderLastName: string;
-    relationshipLeaderSegment: string;
-    relationshipLeaderManagementLevel: string;
-    relationshipLeaderGuid: string;
     relationshipLeaderPartyId: string;
     isRelationshipLeader: boolean;
     isTalentConsultant: boolean;
