@@ -2,9 +2,10 @@ import { MailService } from '@sendgrid/mail'
 
 export class SendGridEmailAdapter {
     private _sendgridFromEmail: string;
-    private _mailService: MailService = new MailService();
+    private _mailService: MailService;
 
     constructor (sendgridApiKey: string, sendgridFromEmail: string) {
+      this._mailService = new MailService();
       this._mailService.setApiKey(sendgridApiKey);
       this._sendgridFromEmail = sendgridFromEmail;
     }
