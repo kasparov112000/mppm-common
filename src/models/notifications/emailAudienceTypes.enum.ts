@@ -1,4 +1,6 @@
 export enum EmailAudienceTypes {
     Reviewee = 'Reviewee',
-    Reviewer = 'Reviewer'
+    Reviewer = 'Reviewer',
+    RevieweesRelationshipLeader = 'RevieweesRelationshipLeader',
+    ReviewersRelationshipLeader = 'ReviewersRelationshipLeader'
   }
