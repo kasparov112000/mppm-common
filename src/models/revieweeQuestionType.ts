@@ -1,4 +1,4 @@
 export enum RevieweeQuestionType {
-    SingleChoice,
-    FreeText
+    SingleChoice = 'singlechoice',
+    FreeText = 'freetext'
 }
