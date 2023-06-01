@@ -8,6 +8,7 @@ export interface IEmployee {
     firstName: string;
     preferredFirstName: string;
     lastName: string;
+    preferredLastName: string;
     email: string;
     managementLevel: string;
     segment: string;
