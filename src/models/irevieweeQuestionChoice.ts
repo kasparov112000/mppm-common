@@ -1,6 +1,7 @@
+import mongoose from 'mongoose';
 import { ILanguageProperty } from './ilanguageProperty';
 
 export interface IRevieweeQuestionChoice {
-    id: number;
+    id: mongoose.ObjectId;
     text: ILanguageProperty;    
 }
