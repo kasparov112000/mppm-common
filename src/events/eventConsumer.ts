@@ -9,7 +9,7 @@ export abstract class EventConsumer {
 
   public abstract processMessage(job: any);
 
-  public async logProgress(job: any, message: string, progress?: number, loggerPrefixMessage?: string) {
-    await this._messagingService.logProgress(job, message, progress, loggerPrefixMessage);
+  public async logProgress(job: any, message: string, progress?: number) {
+    await this._messagingService.logProgress(job, message, progress);
   }
 }

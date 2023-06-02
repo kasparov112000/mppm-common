@@ -1,6 +1,7 @@
-import { Queue, Worker, Job, JobState, JobsOptions, isEmpty, ConnectionOptions } from 'bullmq';
+import { Queue, Worker, Job, JobState, JobsOptions, ConnectionOptions } from 'bullmq';
 import { EventModel } from '../events/event.model';
 import { IMessagingService } from '../events/iMessagingService';
+import {isEmpty} from 'lodash';
 
 export class BullService implements IMessagingService {
   private servicename = 'BullService';
@@ -84,11 +85,11 @@ export class BullService implements IMessagingService {
     await job.log(`${new Date().toString()} - ${log}`);
   }
 
-  public async logProgress(job: Job, message, progress?, lumberjackPrefixMessage?) {
-    const loggerMsg = (lumberjackPrefixMessage ?? '') + message;
+  public async logProgress(job: Job, message: string, progress?: number) {
     if (job) {
-      if (!isEmpty(message?.toString())) {
+      if(!isEmpty(message)) {
         await this.addLogToJob(job, message);
+        const loggerMsg = `QueueName: ${job.queueName}, JobId: ${job.opts.jobId}, Message: ${message}`;
         this._logger.info(this.servicename, loggerMsg);
       }
       if (!isEmpty(progress?.toString())) {
