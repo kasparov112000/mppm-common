@@ -1,4 +1,4 @@
-import { MailService } from '@sendgrid/mail'
+import { MailService, MailDataRequired, ClientResponse } from '@sendgrid/mail'
 
 export class SendGridEmailAdapter {
     private _sendgridFromEmail: string;
@@ -10,13 +10,8 @@ export class SendGridEmailAdapter {
       this._sendgridFromEmail = sendgridFromEmail;
     }
 
-    async sendEmail(toList: string[], ccList: string[], subjectLine: string, body:string): Promise<number> {
-      return await this._mailService.sendMultiple({
-        to: toList,
-        cc: ccList,
-        from: this._sendgridFromEmail,
-        subject: subjectLine,
-        html: body
-      })[0]?.statusCode;
-    };
+    async sendEmail(mailData: MailDataRequired, isMultiple: boolean = false): Promise<ClientResponse> {
+      const res = await this._mailService.send(mailData,isMultiple);
+      return res[0];
+    }
 }
