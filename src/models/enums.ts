@@ -20,4 +20,6 @@ export enum AdminStatusNamesEnum {
   ReadyToUse = 'Ready to use',
   InUse = 'In use',
   Archived = 'Archived',
+  Published = 'Published',
+  ReadyToPublish = 'Ready to publish',
 }
