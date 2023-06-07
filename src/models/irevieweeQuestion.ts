@@ -6,4 +6,5 @@ export interface IRevieweeQuestion {
     questionType: RevieweeQuestionType;
     text: ILanguageProperty;
     choices: IRevieweeQuestionChoice[];
+    name: string;
 }

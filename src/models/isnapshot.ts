@@ -13,7 +13,7 @@ export interface ISnapshot extends IHistory {
     projectCodes?: string[];
     projectHours?: number[];
     revieweeQuestionIDs?: string[];
-    revieweeQuestionAnswers?: string[];
+    revieweeQuestionAnswers?: string[]; 
     status: StatusNamesEnum;
     performanceYear?: number;
     statusDates?: StatusDates;
