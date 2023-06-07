@@ -8,6 +8,7 @@ export interface INotification {
     _id?: mongoose.Schema.Types.ObjectId;
     jobId?: string;
     notificationType: NotificationTypes;
+    refId?: string;
     destination: NotificationDestinations;
     payload: NotificationEmailPayload;
     status?: NotificationStatuses;
