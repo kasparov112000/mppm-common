@@ -1,3 +1,5 @@
+import { IAnswerChoice } from "./iAnswer";
+
 export interface Title {
     default: string;
     es: string;
@@ -13,7 +15,7 @@ export interface Title {
     title: Title;
     questionText: string;
     optlText: Title;
-    choices?: any[];
+    choices?: IAnswerChoice[];
     isLock: boolean;
   }
   
