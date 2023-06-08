@@ -13,7 +13,7 @@ export interface Title {
     title: Title;
     questionText: string;
     optlText: Title;
-    choices: any[];
+    choices?: any[];
     isLock: boolean;
   }
   
