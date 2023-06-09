@@ -1,4 +1,4 @@
 export interface ILanguageProperty {
-    en: string;
-    es: string;
+    'en-US': string;
+    'es-US': string;
 }
