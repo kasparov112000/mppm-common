@@ -6,6 +6,6 @@ export type SnapshotType = {
 }
 
 export const SnapshotTypes = {
-    [TypeNamesEnum.snapshot]: { name: TypeNamesEnum.snapshot, displayText: 'snapshot' } as SnapshotType,
-    [TypeNamesEnum.reinvest]: { name: TypeNamesEnum.reinvest, displayText: 'reinvest' } as SnapshotType
+    [TypeNamesEnum.snapshot]: { name: TypeNamesEnum.snapshot, displayText: 'Snapshot' } as SnapshotType,
+    [TypeNamesEnum.reinvest]: { name: TypeNamesEnum.reinvest, displayText: 'Reinvest' } as SnapshotType
 }
