@@ -13,7 +13,7 @@ export interface IAnswer {
     name: string;
     inputMetric: string;
     choices: [IAnswerChoice];
-    noOfQuestionsUsed: Number;
+    noOfQuestionsUsed: number;
     status?: string;
     createdBy: String;
     createdAt?: Date;
