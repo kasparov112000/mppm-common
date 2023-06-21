@@ -30,4 +30,9 @@ export interface IEmployee {
     location: string;
     timeType: string;
     timeInGrade: string;
+    countryCode: string,
+    ppid: string,
+    globalNetworkCompetency: string,
+    supervisoryOrganizationCode: string,
+    supervisoryOrganization: string
   }
