@@ -19,5 +19,11 @@ export type IWorkdayEmployee = {
     location: string,
     timeInGrade: string,
     globalLOS: string,
-    hireDate: Date
+    hireDate: Date,
+    locationDescription: string,
+    countryCode: string,
+    ppid: string,
+    globalCompetencyNetworkDescription: string,
+    supervisoryOrganization: string,
+    employeeStatus: string
 }
