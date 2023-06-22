@@ -22,6 +22,7 @@ export class Historian {
             ref: newDoc._id?.toString(),
             updatedDate: newDoc.lastUpdatedDate,
             updatedBy: newDoc.lastUpdatedBy,
+            updatedByName: newDoc.lastUpdatedByName,
             prevValue: prevDoc,
             newValue: newDoc
         }
