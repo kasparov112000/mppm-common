@@ -5,3 +5,4 @@ export { NotEqual, IsEqual } from './equalValidator';
 export { NotGreaterThanOrEqual, IsGreaterThanOrEqual } from './greaterThanOrEqualValidator';
 export { NotMongoID, IsMongoID } from './mongoIDValidator';
 export { NotNull, IsNull } from './nullValidator';
+export { NotDate, IsDate } from './dateValidator';
