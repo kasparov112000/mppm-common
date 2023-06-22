@@ -28,6 +28,7 @@ export interface IEmployee {
     jobFamily: string;
     jobFamilyGroup: string;
     location: string;
+    locationDescription: string;
     timeType: string;
     timeInGrade: string;
     countryCode: string,
