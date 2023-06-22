@@ -35,7 +35,7 @@ export default class CoverageCalculation {
     }
 
     public static getInitiateSnapshotsBreakdown(snapshots: ISnapshot[], projects: IGfsProjects[], addedHours: number): IInitiateSnapshotBreakdown {
-        const totalGFSHours = this.getTotalGFSHours(projects);  // 1911
+        const totalGFSHours = this.getTotalGFSHours(projects);
         const hoursByState = this.getHoursByState(snapshots, totalGFSHours);
         const countByState = this.getCountByState(snapshots);
         
@@ -46,7 +46,7 @@ export default class CoverageCalculation {
         }
         const totalBreakdown: BreakdownElement = {
             name: '', 
-            value: hoursByState.acknowledged.value + hoursByState.review.value + addedHoursBreakdown.value, // 2714  WRONG
+            value: hoursByState.acknowledged.value + hoursByState.review.value + addedHoursBreakdown.value,
             pct: hoursByState.acknowledged.pct + hoursByState.review.pct + addedHoursBreakdown.pct
         }
         const notCoveredBreakdown: BreakdownElement = {
@@ -59,10 +59,10 @@ export default class CoverageCalculation {
             totalHours: totalGFSHours,
             totalInitiated: countByState.initiated,
             totalAcknowledged: countByState.acknowledged,
-            [StatusNamesEnum.acknowledged]: hoursByState.acknowledged,  // 0
-            [StatusNamesEnum.review]: hoursByState.review,  // 803
-            added: addedHoursBreakdown,  // 0
-            total: totalBreakdown,  // 2714 --> 803
+            [StatusNamesEnum.acknowledged]: hoursByState.acknowledged,
+            [StatusNamesEnum.review]: hoursByState.review,
+            added: addedHoursBreakdown,
+            total: totalBreakdown,
             [StatusNamesEnum.draft]: hoursByState.draft,
             notCovered: notCoveredBreakdown
         }
