@@ -23,3 +23,8 @@ export enum AdminStatusNamesEnum {
   Published = 'Published',
   ReadyToPublish = 'Ready to publish',
 }
+
+export enum QuestionType {
+  SingleChoice = 'Single Choice',
+  Comment = 'Comment'
+}
