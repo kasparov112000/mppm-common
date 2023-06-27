@@ -16,7 +16,7 @@ export interface IEmployee {
     costCenterLevel4: string;
     costCenterLevel4Name: string;
     costCenterLevel5: string;
-    countryCode: string,
+    countryCode: string;
     email: string;
     employeeStatus: string;
     employeeStatusCode: string;
@@ -24,7 +24,7 @@ export interface IEmployee {
     employeeTypeId: string;
     firstName: string;
     globalLOS: string;
-    globalNetworkCompetency: string,
+    globalNetworkCompetency: string;
     guid: string;
     hireDate: Date;
     isRelationshipLeader: boolean;
@@ -47,7 +47,7 @@ export interface IEmployee {
     matrixManagerPartyId: string;
     matrixManagerSegment: string;
     partyId: string;
-    ppid: string,
+    ppid: string;
     preferredFirstName: string;
     preferredLastName: string;
     primaryHrManagerSupervisory: string;
@@ -63,8 +63,8 @@ export interface IEmployee {
     relationshipLeaderPartyId: string;
     relationshipLeaderSegment: string;
     segment: string;
-    supervisoryOrganization: string
-    supervisoryOrganizationCode: string,
+    supervisoryOrganization: string;
+    supervisoryOrganizationCode: string;
     talentConsultantFirstName: string;
     talentConsultantGuid: string;
     talentConsultantLastName: string;
