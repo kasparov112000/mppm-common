@@ -2,38 +2,77 @@ import mongoose from "mongoose";
 
 export interface IEmployee {
     _id?: mongoose.Schema.Types.ObjectId;
-    workdayId: string;
-    partyId: string;
-    guid: string;
-    firstName: string;
-    preferredFirstName: string;
-    lastName: string;
-    preferredLastName: string;
+    businessTitle: string;
+    cohort: string;
+    companyHierarchy: string;
+    compGradeProfile: string;
+    costCenter: string;
+    costCenterLevel1: string;
+    costCenterLevel1Name: string;
+    costCenterLevel2: string;
+    costCenterLevel2Name: string;
+    costCenterLevel3: string;
+    costCenterLevel3Name: string;
+    costCenterLevel4: string;
+    costCenterLevel4Name: string;
+    costCenterLevel5: string;
+    countryCode: string,
     email: string;
-    managementLevel: string;
-    segment: string;
     employeeStatus: string;
     employeeStatusCode: string;
-    relationshipLeaderPartyId: string;
+    employeeType: string;
+    employeeTypeId: string;
+    firstName: string;
+    globalLOS: string;
+    globalNetworkCompetency: string,
+    guid: string;
+    hireDate: Date;
     isRelationshipLeader: boolean;
     isTalentConsultant: boolean;
-    businessTitle: string;
-    costCenter: string;
-    costCenterLevel4: string;
-    employeeType: string;
-    globalLOS: string;
-    hireDate: Date;
-    jobProfile: string;
-    jobLevel: string;
     jobFamily: string;
     jobFamilyGroup: string;
+    jobFamilyId: string;
+    jobLevel: string;
+    jobProfile: string;
+    lastName: string;
     location: string;
     locationDescription: string;
-    timeType: string;
-    timeInGrade: string;
-    countryCode: string,
+    managementLevel: string;
+    managementLevelId: string;
+    managerId: string;
+    matrixManagerFirstName: string;
+    matrixManagerGuid: string;
+    matrixManagerLastName: string;
+    matrixManagerManagementLevel: string;
+    matrixManagerPartyId: string;
+    matrixManagerSegment: string;
+    partyId: string;
     ppid: string,
-    globalNetworkCompetency: string,
-    supervisoryOrganizationCode: string,
+    preferredFirstName: string;
+    preferredLastName: string;
+    primaryHrManagerSupervisory: string;
+    professionalExperienceDate: Date;
+    profileId: string;
+    pwcGlobalNetwork: string;
+    pwcGlobalNetworkId: string;
+    rehireDate: Date;
+    relationshipLeaderFirstName: string;
+    relationshipLeaderGuid: string;
+    relationshipLeaderLastName: string;
+    relationshipLeaderManagementLevel: string;
+    relationshipLeaderPartyId: string;
+    relationshipLeaderSegment: string;
+    segment: string;
     supervisoryOrganization: string
-  }
+    supervisoryOrganizationCode: string,
+    talentConsultantFirstName: string;
+    talentConsultantGuid: string;
+    talentConsultantLastName: string;
+    talentConsultantManagementLevel: string;
+    talentConsultantPartyId: string;
+    talentConsultantPPID: string;
+    talentConsultantSegment: string;
+    timeInGrade: string;
+    timeType: string;
+    workdayId: string;
+}
