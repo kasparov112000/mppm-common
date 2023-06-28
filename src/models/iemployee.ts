@@ -56,7 +56,7 @@ export interface IEmployee {
     timeInGrade: string;
     timeType: string;
     workdayId: string;
-    relationshipLeader?: IEmployee;
-    talentConsultant?: IEmployee;
-    matrixManager?: IEmployee;
+    relationshipLeaderPartyId?: string;
+    talentConsultantPartyId?: string;
+    matrixManagerPartyId?: string;
 }
