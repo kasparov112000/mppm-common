@@ -26,4 +26,8 @@ export type IWorkdayEmployee = {
     globalCompetencyNetworkDescription: string,
     supervisoryOrganization: string,
     employeeStatus: string
+    workdayRelationshipLeader?: IWorkdayEmployee;
+    workdayMatrixManager?: IWorkdayEmployee;
+    workdayTalentConsultant?: IWorkdayEmployee;
+    workdayReviewer?: IWorkdayEmployee;
 }
