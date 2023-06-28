@@ -40,14 +40,6 @@ export interface IEmployee {
     managementLevel: string;
     managementLevelId: string;
     managerId: string;
-    matrixManagerFirstName: string;
-    matrixManagerGuid: string;
-    matrixManagerLastName: string;
-    matrixManagerManagementLevel: string;
-    matrixManagerPartyId: string;
-    matrixManagerPPID: string;
-    matrixManagerSegment: string;
-    matrixManagerWorkerId: string;
     partyId: string;
     ppid: string;
     preferredFirstName: string;
@@ -58,28 +50,13 @@ export interface IEmployee {
     pwcGlobalNetwork: string;
     pwcGlobalNetworkId: string;
     rehireDate: Date;
-    relationshipLeaderFirstName: string;
-    relationshipLeaderGuid: string;
-    relationshipLeaderLastName: string;
-    relationshipLeaderManagementLevel: string;
-    relationshipLeaderPartyId: string;
-    relationshipLeaderPPID: String,
-    relationshipLeaderSegment: string;
-    relationshipLeaderWorkerId: string;
     segment: string;
     supervisoryOrganization: string;
     supervisoryOrganizationCode: string;
-    talentConsultantCountryCode: string;
-    talentConsultantFirstName: string;
-    talentConsultantGuid: string;
-    talentConsultantLastName: string;
-    talentConsultantManagementLevel: string;
-    talentConsultantOrganization: string;
-    talentConsultantPartyId: string;
-    talentConsultantPPID: string;
-    talentConsultantSegment: string;
-    talentConsultantWorkerId: string;
     timeInGrade: string;
     timeType: string;
     workdayId: string;
+    relationshipLeader?: IEmployee;
+    talentConsultant?: IEmployee;
+    matrixManager?: IEmployee;
 }
