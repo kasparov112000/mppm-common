@@ -19,6 +19,7 @@ export interface ISnapshot extends IHistory {
     statusDates?: StatusDates;
     snapshotType?: TypeNamesEnum;
     workdayEmployee?: IWorkdayEmployee;
+    workdayReviewer?: IWorkdayEmployee;
     createdBy: string;
     createdDate: Date;
     lastUpdatedBy: string;

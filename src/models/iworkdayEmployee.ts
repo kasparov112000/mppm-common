@@ -4,6 +4,7 @@ export type IWorkdayEmployee = {
     firstName: string,
     lastName: string,
     preferredFirsName: string,
+    preferredLastName: string,
     segment: string,
     costCenterLevel4: string,
     businessTitle: string,
@@ -23,6 +24,7 @@ export type IWorkdayEmployee = {
     locationDescription: string,
     countryCode: string,
     ppid: string,
+    partyId: string,
     globalCompetencyNetworkDescription: string,
     supervisoryOrganization: string,
     employeeStatus: string
