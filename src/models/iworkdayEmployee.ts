@@ -31,5 +31,4 @@ export type IWorkdayEmployee = {
     workdayRelationshipLeader?: IWorkdayEmployee;
     workdayMatrixManager?: IWorkdayEmployee;
     workdayTalentConsultant?: IWorkdayEmployee;
-    workdayReviewer?: IWorkdayEmployee;
 }
