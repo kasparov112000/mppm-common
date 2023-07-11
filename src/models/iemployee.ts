@@ -8,13 +8,13 @@ export interface IEmployee {
     compGradeProfile: string;
     costCenter: string;
     costCenterLevel1: string;
-    costCenterLevel1Name: string;
+    costCenterLevel1Code: string;
     costCenterLevel2: string;
-    costCenterLevel2Name: string;
+    costCenterLevel2Code: string;
     costCenterLevel3: string;
-    costCenterLevel3Name: string;
+    costCenterLevel3Code: string;
     costCenterLevel4: string;
-    costCenterLevel4Name: string;
+    costCenterLevel4Code: string;
     costCenterLevel5: string;
     countryCode: string;
     email: string;
