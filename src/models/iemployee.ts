@@ -44,6 +44,7 @@ export interface IEmployee {
     ppid: string;
     preferredFirstName: string;
     preferredLastName: string;
+    preferredFullName: string;
     primaryHrManagerSupervisory: string;
     professionalExperienceDate: Date;
     profileId: string;
