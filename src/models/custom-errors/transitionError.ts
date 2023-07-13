@@ -6,7 +6,7 @@ export default class TransitionError extends Error {
     public readonly transitionLanguage: ILanguageProperty;
     public readonly errorCode: Number;
     
-    constructor(message: any, transitionResult: TransitionResult<any>, messageLanguage?: ILanguageProperty, errorCode?: Number) {
+    constructor(message: string, transitionResult: TransitionResult<any>, messageLanguage?: ILanguageProperty, errorCode?: Number) {
         super(message);
         this.transitionResult = transitionResult;
         this.transitionLanguage = messageLanguage;
