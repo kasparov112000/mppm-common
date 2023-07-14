@@ -1,6 +1,6 @@
 {
   "name": "@mppm/mppm-common",
-  "version": "1.0.87",
+  "version": "1.0.88",
   "description": "MPPM Common Library",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
