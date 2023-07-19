@@ -5,7 +5,8 @@ import { TransitionResult } from './transitionResult';
 
 export class StateMachine<T> {
     public validTransitions: StateTransition<T>[] = [];
-
+    public transitionError: TransitionError;
+    
     public async transition(fromState: T, toState: T, callbackFn: () => any, inValidTransitionCallBack?: () => any): Promise<TransitionResult<T>> {
       const result: TransitionResult<T> = {
         fromState: fromState,
@@ -17,6 +18,7 @@ export class StateMachine<T> {
       if (!isValidTransition) {
         if(inValidTransitionCallBack) { 
           inValidTransitionCallBack();
+          throw new TransitionError(this.transitionError.message, this.transitionError.transitionResult, this.transitionError.text, this.transitionError.code);
         }
         else {
           throw new TransitionError(`Invalid State Transition: Cannot update a transition from ${fromState} to ${toState}`, result);

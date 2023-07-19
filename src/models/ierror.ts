@@ -4,6 +4,6 @@ import { ILanguageProperty } from './ilanguageProperty';
 export interface IError {
     _id?: mongoose.Schema.Types.ObjectId;
     type: string;
-    code: string;
+    code: Number;
     text: ILanguageProperty;
 }
