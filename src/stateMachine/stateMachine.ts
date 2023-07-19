@@ -23,7 +23,7 @@ export class StateMachine<T> {
 
       if (!isValidTransition) {
         if(inValidTransitionCallBack) { 
-          inValidTransitionCallBack();
+          await inValidTransitionCallBack();
           throw new TransitionError(this.transitionError.message, this.transitionError.transitionResult, this.transitionError.text, this.transitionError.code);
         }
         else {
