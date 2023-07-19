@@ -1,15 +1,17 @@
 import { TransitionResult } from '../../stateMachine/transitionResult';
 import { ILanguageProperty } from '../ilanguageProperty';
+import { IError } from '../ierror';
 
-export default class TransitionError extends Error {
+export default class TransitionError extends Error implements IError {
     public readonly transitionResult: TransitionResult<any>;
-    public readonly messageLanguage: ILanguageProperty;
-    public readonly errorCode: Number;
-    
-    constructor(message: string, transitionResult: TransitionResult<any>, messageLanguage?: ILanguageProperty, errorCode?: Number) {
+    public type: string;
+    public code: Number;
+    public text: ILanguageProperty;
+
+    constructor(message: string, transitionResult: TransitionResult<any>, text?: ILanguageProperty, code?: Number) {
         super(message);
         this.transitionResult = transitionResult;
-        this.messageLanguage = messageLanguage;
-        this.errorCode = errorCode;        
+        this.text = text;
+        this.code = code;        
     }
 }
