@@ -13,7 +13,13 @@ export class StateMachine<T> {
         isSuccessful: false
       }
 
-      const isValidTransition = this.validTransitions.find(v => v.state === fromState).isTransitionValid(toState) ?? false;
+      let isValidTransition = false;
+      const transition = this.validTransitions.find(v => v.state === fromState);
+      
+      if(transition !== undefined) {
+        isValidTransition = transition.isTransitionValid(toState);
+      }
+
       if (!isValidTransition) {
         if(inValidTransitionCallBack) { 
           inValidTransitionCallBack();
