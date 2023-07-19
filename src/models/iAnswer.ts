@@ -1,12 +1,13 @@
 import mongoose from 'mongoose';
 
 export interface IAnswerChoice {
-    value: string;
-    text: {
-      default: string;
-      es: string;
-    }
+  value: string;
+  text: {
+    default: string;
+    es: string;
   }
+  na: boolean,
+}
 
 export interface IAnswer {
     _id?: mongoose.Schema.Types.ObjectId;
