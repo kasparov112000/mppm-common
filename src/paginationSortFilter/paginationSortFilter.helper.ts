@@ -23,7 +23,7 @@ export type QueryParamsModel = {
 }
 
 export class PaginationSortingFilterHelper {
-  public getRequestQueryParams(query): QueryParamsModel {
+  public static getRequestQueryParams(query): QueryParamsModel {
     const queryParams: QueryParamsModel = {
       pageNum: +query.pageNum || 1,
       pageSize: +query.pageSize || 100,
@@ -36,7 +36,7 @@ export class PaginationSortingFilterHelper {
     return queryParams;
   }
 
-  public async handlePaginationSortAndFilter<T>(collection: Model<any, {}, {}, any>, queryParams: QueryParamsModel, validator: Validator, query: FilterQuery<any> = {}) {
+  public static async handlePaginationSortAndFilter<T>(collection: Model<any, {}, {}, any>, queryParams: QueryParamsModel, validator: Validator, query: FilterQuery<any> = {}) {
     let { pageNum, pageSize, sortBy, sortOrder, filterBy, filterValue, languageCode } = queryParams;
 
     // sort
