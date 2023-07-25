@@ -1,15 +1,17 @@
+import { Types } from 'mongoose';
 import { IAnswerChoice } from "./iAnswer";
 import { ILanguageProperty } from "./ilanguageProperty";
 export interface Question {
   _id?: string;
-  selected?: boolean;
-  type: string;
+  type?: string;
   name: string;
-  inputMetric: string;
-  status: string;
   title: ILanguageProperty;
-  questionText: string;
-  optlText: ILanguageProperty;
+  answerId?: Types.ObjectId,
+  noOfTemplatesUsed: number,
   choices?: IAnswerChoice[];
-  isLock: boolean;
+  optlText?: ILanguageProperty
+  status: string;
+  inputMetric?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
