@@ -1,12 +1,10 @@
 import mongoose from 'mongoose';
+import { ILanguageProperty } from './ilanguageProperty'
 
 export interface IAnswerChoice {
   value: string;
-  text: {
-    default: string;
-    es: string;
-  }
-  na: boolean,
+  text: ILanguageProperty;
+  na: boolean
 }
 
 export interface IAnswer {
