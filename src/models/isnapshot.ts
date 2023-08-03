@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { IHistory } from './contracts/history';
 import { StatusNamesEnum, TypeNamesEnum } from './enums';
+import { ProjectsDetail } from './projectDetailsTypes';
 import { IWorkdayEmployee } from './iworkdayEmployee';
 import { StatusDates } from './statusDates';
 
@@ -24,4 +25,5 @@ export interface ISnapshot extends IHistory {
     createdDate: Date;
     lastUpdatedBy: string;
     lastUpdatedDate: Date;
+    projectsDetail?: ProjectsDetail;
   }
