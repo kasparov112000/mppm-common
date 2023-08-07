@@ -4,7 +4,8 @@ import { ILanguageProperty } from './ilanguageProperty'
 export interface IAnswerChoice {
   value: string;
   text: ILanguageProperty;
-  na: boolean
+  na: boolean,
+  index: number
 }
 
 export interface IAnswer {
