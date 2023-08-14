@@ -15,6 +15,7 @@ export interface IEmployee {
     costCenterLevel3Code: string;
     costCenterLevel4: string;
     costCenterLevel4Code: string;
+    costCenterLevel5: string;
     costCenterLevel5Code: string;
     countryCode: string;
     email: string;
