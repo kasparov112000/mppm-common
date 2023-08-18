@@ -6,6 +6,7 @@ export type IWorkdayEmployee = {
     preferredFirsName: string,
     preferredLastName: string,
     segment: string,
+    companyHierarchy: string;
     costCenterLevel1: string,
     costCenterLevel2: string,
     costCenterLevel3: string,
