@@ -11,6 +11,7 @@ export type IWorkdayEmployee = {
     costCenterLevel2: string,
     costCenterLevel3: string,
     costCenterLevel4: string,
+    costCenterLevel5: string,
     businessTitle: string,
     employeeId: string,
     employeeType: string,
