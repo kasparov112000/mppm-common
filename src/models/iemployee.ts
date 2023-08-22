@@ -61,4 +61,5 @@ export interface IEmployee {
     relationshipLeaderPartyId?: string;
     talentConsultantPartyId?: string;
     matrixManagerPartyId?: string;
+    isDeleted?: boolean;
 }
