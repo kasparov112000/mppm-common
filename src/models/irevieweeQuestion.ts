@@ -7,4 +7,5 @@ export interface IRevieweeQuestion {
     text: ILanguageProperty;
     choices: IRevieweeQuestionChoice[];
     name: string;
+    isActive: boolean;
 }
