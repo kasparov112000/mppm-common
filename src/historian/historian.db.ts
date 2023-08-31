@@ -22,5 +22,4 @@ export class HistorianDBService {
         const allHistory = await this.getAllHistory(refId);
         return allHistory.find(h => h.newValue.version === version);
     }
-}.
-code
+}
