@@ -3,5 +3,6 @@ import { ILanguageProperty } from './ilanguageProperty';
 
 export interface IRevieweeQuestionChoice {
     id: mongoose.ObjectId;
-    text: ILanguageProperty;    
+    text: ILanguageProperty;
+    isActive: boolean;
 }
