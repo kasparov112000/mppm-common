@@ -14,7 +14,7 @@ export interface IReviewerResponse {
 export type ReviewerAnswer = {
     sectionIndex: number,
     categoryIndex: number,
-    questionId: string,
-    answerId: string,
+    questionId: mongoose.Schema.Types.ObjectId,
+    answerId: mongoose.Schema.Types.ObjectId,
     answerText: string
 }
