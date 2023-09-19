@@ -14,6 +14,6 @@ export interface IHistory {
     _id?: mongoose.Schema.Types.ObjectId,
     lastUpdatedDate: Date,
     lastUpdatedBy: string,
-    lastUpdatedByName: string,
+    lastUpdatedByName?: string,
     version: number
 }
