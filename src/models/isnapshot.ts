@@ -4,6 +4,7 @@ import { StatusNamesEnum, TypeNamesEnum } from './enums';
 import { ProjectsDetail } from './projectDetailsTypes';
 import { IWorkdayEmployee } from './iworkdayEmployee';
 import { StatusDates } from './statusDates';
+import { StatusDateLogItem } from './statusDateItem';
 
 export interface ISnapshot extends IHistory {
     _id?: mongoose.Schema.Types.ObjectId;
@@ -18,6 +19,7 @@ export interface ISnapshot extends IHistory {
     status: StatusNamesEnum;
     performanceYear?: number;
     statusDates?: StatusDates;
+    statusLogs: StatusDateLogItem[];
     snapshotType?: TypeNamesEnum;
     workdayEmployee?: IWorkdayEmployee;
     workdayReviewer?: IWorkdayEmployee;
