@@ -19,7 +19,7 @@ export interface ISnapshot extends IHistory {
     status: StatusNamesEnum;
     performanceYear?: number;
     statusDates?: StatusDates;
-    statusLogs: StatusDateLogItem[];
+    statusLogs?: StatusDateLogItem[];
     snapshotType?: TypeNamesEnum;
     workdayEmployee?: IWorkdayEmployee;
     workdayReviewer?: IWorkdayEmployee;
