@@ -1,7 +1,7 @@
 import { Queue, Worker, Job, JobState, JobsOptions, ConnectionOptions } from 'bullmq';
 import { EventModel } from '../events/event.model';
 import { IMessagingService } from '../events/iMessagingService';
-import {isEmpty} from 'lodash';
+import { isEmpty } from 'lodash';
 
 export class BullService implements IMessagingService {
   private servicename = 'BullService';
@@ -31,6 +31,9 @@ export class BullService implements IMessagingService {
   }
 
   public async addJob(event: EventModel<any>): Promise<string | undefined> {
+    if (!isEmpty(event?.options?.repeat)) {
+      await this.checkAndRemoveRepeatableJobs(event.queueName);
+    }
     const job = await this._queue[event.queueName].add(event.queueName, event.payload, event.options);
     return job.id;
   }
@@ -52,6 +55,13 @@ export class BullService implements IMessagingService {
   public async getRepeatableJobs(queueName: string) {
     const repeatableJobs = await this._queue[queueName].getRepeatableJobs();
     return repeatableJobs;
+  }
+
+  public async checkAndRemoveRepeatableJobs(queueName) {
+    const jobs = await this.getRepeatableJobs(queueName);
+    for (const job of jobs) {
+      await this.removeRepeatableJob(queueName, job.key);
+    }
   }
 
   public async getJobStatus(queueName: string, jobId: string): Promise<any> {
@@ -87,7 +97,7 @@ export class BullService implements IMessagingService {
 
   public async logProgress(job: Job, message: string, progress?: number) {
     if (job) {
-      if(!isEmpty(message)) {
+      if (!isEmpty(message)) {
         await this.addLogToJob(job, message);
         const loggerMsg = `QueueName: ${job.queueName}, JobId: ${job.opts.jobId}, Message: ${message}`;
         this._logger.info(this.servicename, loggerMsg);

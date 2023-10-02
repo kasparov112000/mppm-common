@@ -1,6 +1,6 @@
 {
   "name": "@mppm/mppm-common",
-  "version": "1.8.8",
+  "version": "1.8.9",
   "description": "MPPM Common Library",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -37,7 +37,7 @@
     "@quicksuite/commons-logger": "^3.31.2",
     "@sendgrid/mail": "^7.7.0",
     "axios": "^0.26.1",
-    "bullmq": "^3.13.4",
+    "bullmq": "^4.12.0",
     "express": "^4.17.3",
     "express-correlation-id": "^2.0.1",
     "express-jsdoc-swagger": "^1.8.0",
