@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-interface IPerformanceMeasure {
+export interface IPerformanceMeasure {
     _id?: mongoose.Schema.Types.ObjectId;
     performanceMeasureName: string;
     performanceYear: string;
@@ -12,7 +12,7 @@ interface IPerformanceMeasure {
     segments: ISegment[]
 }
 
-interface IPerformanceMeasureByInputMetric {
+export interface IPerformanceMeasureByInputMetric {
     _id?: mongoose.Schema.Types.ObjectId;
     performanceMeasureName: string;
     performanceYear: string;
@@ -24,48 +24,48 @@ interface IPerformanceMeasureByInputMetric {
     segment: ISegmentByInputMetric
 }
 
-interface IInputMetric {
+export interface IInputMetric {
     inputMetric: string
 }
   
-interface IPerformanceMeasuresByInputMetric {
+export interface IPerformanceMeasuresByInputMetric {
     _id: IInputMetric;
     performanceMeasures: IPerformanceMeasureByInputMetric[]
 }
 
-interface IManagementLevel {
+export interface IManagementLevel {
     levelName: string;
     value: string;
     na: boolean;
 }
 
-interface IPeriodDate {
+export interface IPeriodDate {
     value?: Date;
     na?: boolean;
 }
     
-interface IPeriod {
+export interface IPeriod {
     periodName?: string;
     startDate: IPeriodDate;
     endDate: IPeriodDate;
     managementLevels: IManagementLevel[];
 }
   
-interface IPeriodByInputMetric {
+export interface IPeriodByInputMetric {
     periodName?: string;
     startDate: IPeriodDate;
     endDate: IPeriodDate;
     managementLevel: IManagementLevel;
 }
 
-interface ISegmentByInputMetric {
+export interface ISegmentByInputMetric {
     segmentName: string;
     displayOnDashboard: string;
     measurementPeriod: string;
     periods: IPeriodByInputMetric[]
 }
 
-interface ISegment {
+export interface ISegment {
     segmentName: string;
     displayOnDashboard: string;
     measurementPeriod: string;
