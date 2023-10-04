@@ -1,5 +1,5 @@
 import { ILanguageProperty } from "./ilanguageProperty"
-
+import { IMeasureDefinition } from './performanceMeasureTypes' 
 // Enums
 export enum GoalStatus {
     Met = 'Met',
@@ -18,7 +18,7 @@ export interface IPerformanceMetricCollection {
     performanceMetricLabel:ILanguageProperty
     performanceMetricType: string,
     sequenceNumber: number,
-    metrics: Metric[]
+    metrics: MetricData[]
 }
 
 // Types
@@ -32,14 +32,16 @@ export type SourceInfo = {
     text: ILanguageProperty
 }
 
-export type Metric = {
+export type MetricData = {
     goalStatus: GoalStatus,
     name: string,
-    displayName: ILanguageProperty,
-    goal: Goal,
-    percentageCompleted: number;
-    sequenceNumber: number,
+    percentageCompleted: number,
     value?: any,
-    peerAverage?: PeerAverageRange,
+    peerAverage?: PeerAverageRange
+}
+
+export type Metric = {
+    metricData: MetricData,
+    measureDefinition: IMeasureDefinition,
     sourceInfo?: SourceInfo
 }

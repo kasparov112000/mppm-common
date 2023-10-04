@@ -71,3 +71,14 @@ export interface ISegment {
     measurementPeriod: string;
     periods: IPeriod[]
 }
+
+export interface IMeasureDefinition {
+    performanceMeasureName: string;
+    inputMetric: string;
+    measurementUnit: string;
+    sequenceNumber: number;
+    periodName: string;
+    goalValue: string;
+    periodStartDateValue: Date;
+    periodEndDateValue: Date;
+}
