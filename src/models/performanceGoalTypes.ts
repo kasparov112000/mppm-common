@@ -37,6 +37,7 @@ export type Metric = {
     name: string,
     displayName: ILanguageProperty,
     goal: Goal,
+    percentageCompleted: number;
     sequenceNumber: number,
     value?: any,
     peerAverage?: PeerAverageRange,
