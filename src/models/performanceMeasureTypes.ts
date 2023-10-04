@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { ILanguageProperty } from "./ilanguageProperty";
 
 export interface IPerformanceMeasure {
     _id?: mongoose.Schema.Types.ObjectId;
@@ -73,12 +74,9 @@ export interface ISegment {
 }
 
 export interface IMeasureDefinition {
-    performanceMeasureName: string;
+    performanceMeasureName: ILanguageProperty;
     inputMetric: string;
     measurementUnit: string;
     sequenceNumber: number;
-    periodName: string;
     goalValue: string;
-    periodStartDateValue: Date;
-    periodEndDateValue: Date;
 }
