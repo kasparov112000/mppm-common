@@ -15,10 +15,16 @@ export enum PeerAverageRange {
 
 // Interfaces
 export interface IPerformanceMetricCollection {
-    performanceMetricLabel:ILanguageProperty
+    measureName:ILanguageProperty
     performanceMetricType: string,
+    performanceYear: string,
     sequenceNumber: number,
-    metrics: MetricData[]
+    measereMetrics: MeasureMetrics[]
+}
+
+export interface MeasureMetrics {
+    measureDefinition: IMeasureDefinition,
+    metrics: Metric
 }
 
 // Types
@@ -32,17 +38,21 @@ export type SourceInfo = {
     text: ILanguageProperty
 }
 
-export type MetricData = {
+export type Metric = {
     goalStatus: GoalStatus,
     name: string,
     percentageCompleted: number,
     value?: any,
-    peerAverage?: PeerAverageRange
+    peerAverage?: PeerAverageRange,
+    measurementUnit?: string
 }
 
-export type Metric = {
-    measureName: ILanguageProperty,
-    metricData: MetricData,
-    measureDefinition: IMeasureDefinition,
-    sourceInfo?: SourceInfo
+export enum MetricMeasurementUnit {
+    number = '',
+    percent = '%',
+    day = 'Day',
+    dollars = '$',
+    thousands = 'k',
+    millions = 'm',
+    noData = 'No Data'
 }

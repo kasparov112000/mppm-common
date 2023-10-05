@@ -79,5 +79,4 @@ export interface IMeasureDefinition {
     measurementUnit: string;
     sequenceNumber: number;
     goalValue: string;
-    performanceYear: string;
 }
