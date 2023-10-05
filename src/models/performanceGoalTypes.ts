@@ -41,6 +41,7 @@ export type MetricData = {
 }
 
 export type Metric = {
+    measureName: ILanguageProperty,
     metricData: MetricData,
     measureDefinition: IMeasureDefinition,
     sourceInfo?: SourceInfo
