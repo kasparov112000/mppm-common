@@ -1,5 +1,5 @@
 import { ILanguageProperty } from "./ilanguageProperty"
-
+import { IMeasureDefinition } from './performanceMeasureTypes' 
 // Enums
 export enum GoalStatus {
     Met = 'Met',
@@ -13,12 +13,22 @@ export enum PeerAverageRange {
     Within = 'Within'
 }
 
+export enum MetricMeasurementUnit {
+    number = '',
+    percent = '%',
+    day = 'Day',
+    dollars = '$',
+    thousands = 'k',
+    millions = 'm',
+    noData = 'No Data'
+}
+
 // Interfaces
 export interface IPerformanceMetricCollection {
-    performanceMetricLabel:ILanguageProperty
-    performanceMetricType: string,
-    sequenceNumber: number,
-    metrics: Metric[]
+    performanceMetricLabel: ILanguageProperty;
+    performanceMetricType: string;
+    sequenceNumber: number;
+    metrics: Metric[];
 }
 
 // Types
@@ -32,14 +42,16 @@ export type SourceInfo = {
     text: ILanguageProperty
 }
 
+export type MetricData = {
+    metric: Metric,
+    measureDefinition: IMeasureDefinition,
+}
+
 export type Metric = {
     goalStatus: GoalStatus,
     name: string,
-    displayName: ILanguageProperty,
-    goal: Goal,
-    percentageCompleted: number;
-    sequenceNumber: number,
+    percentageCompleted: number
     value?: any,
     peerAverage?: PeerAverageRange,
-    sourceInfo?: SourceInfo
+    measurementUnit?: string
 }
