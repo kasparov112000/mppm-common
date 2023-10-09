@@ -20,7 +20,8 @@ export enum MetricMeasurementUnit {
     dollars = '$',
     thousands = 'k',
     millions = 'm',
-    noData = 'No Data'
+    noData = 'No Data',
+    dollarString = 'dollar'
 }
 
 // Interfaces
