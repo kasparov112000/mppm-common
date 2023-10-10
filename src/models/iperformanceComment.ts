@@ -7,13 +7,13 @@ export enum CommentType {
 
 export interface IDashboardComment {
     _id?: mongoose.Schema.Types.ObjectId,
-    commentType: CommentType;
     revieweePartyID: String,
     reviewerPartyID: String,
     reviewerName: String;
     reviewerLevel: String;
     dateAcknowledged: Date;
     percentOfTotalHours: Number;
+    totalHours: Number,
     progressionResponse: String;
     progressionComments: String;
     commentsAreasOfStrength: String;
