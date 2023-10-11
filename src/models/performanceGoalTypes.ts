@@ -4,7 +4,7 @@ import { IMeasureDefinition } from './performanceMeasureTypes'
 export enum GoalStatus {
     Met = 'Met',
     NotMet = 'NotMet',
-    NA = 'N.A.'
+    NA = 'NA'
 }
 
 export enum PeerAverageRange {
@@ -51,10 +51,11 @@ export type MetricData = {
 export type Metric = {
     goalStatus: GoalStatus,
     name: string,
-    percentageCompleted: number
+    percentageCompleted: number,
     value?: any,
     peerAverage?: PeerAverageRange,
-    measurementUnit?: string
+    measurementUnit?: string,
+    periodName?: string
 }
 
 export type MeasureMetric = {
