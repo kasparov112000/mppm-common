@@ -51,7 +51,7 @@ export type MetricData = {
 export type Metric = {
     goalStatus: GoalStatus,
     name: string,
-    percentageCompleted: number
+    percentageCompleted: number,
     value?: any,
     peerAverage?: PeerAverageRange,
     measurementUnit?: string,
