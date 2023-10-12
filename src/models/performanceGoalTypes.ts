@@ -4,7 +4,7 @@ import { IMeasureDefinition } from './performanceMeasureTypes'
 export enum GoalStatus {
     Met = 'Met',
     NotMet = 'NotMet',
-    NA = 'NA'
+    NA = 'N/A'
 }
 
 export enum PeerAverageRange {
