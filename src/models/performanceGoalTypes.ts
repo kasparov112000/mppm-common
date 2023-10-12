@@ -55,7 +55,8 @@ export type Metric = {
     value?: any,
     peerAverage?: PeerAverageRange,
     measurementUnit?: string,
-    periodName?: string
+    periodName?: string,
+    goalProgressionSyncFlag?: boolean
 }
 
 export type MeasureMetric = {
