@@ -28,3 +28,12 @@ export enum QuestionType {
   SingleChoice = 'Single Choice',
   Comment = 'Comment'
 }
+
+export enum TimeInGradesEnum {
+  LessThanOneYear = 'Less than one year',
+  OneToTwoYears = 'One to two years',
+  TwoToThreeYears = 'Two to three years',
+  ThreeToFourYears = 'Three to four years',
+  FourToFiveYears = 'Four to five years',
+  GreaterThanFiveYears = 'Greater than five years' 
+}
