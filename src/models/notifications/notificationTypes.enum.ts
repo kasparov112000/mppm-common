@@ -7,6 +7,7 @@ export enum NotificationTypes {
     SnapshotReturnedRevieweeEvent = 'SnapshotReturnedRevieweeEvent',
     SnapshotAcknowledgedEvent = 'SnapshotAcknowledgedEvent',
     SnapshotReturnedToReviewer = 'SnapshotReturnedToReviewer',
-    SnapshotSharedPulledBackByReviewer= 'SnapshotSharedPulledBackByReviewer'
+    SnapshotSharedPulledBackByReviewer= 'SnapshotSharedPulledBackByReviewer',
+    SnapshotReturnedRevieweeToInReview = 'SnapshotReturnedRevieweeToInReview'
   }
   
