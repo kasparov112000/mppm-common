@@ -26,4 +26,5 @@ export interface IDashboardComment {
     lastUpdatedBy: string;
     lastUpdatedByName: string;
     lastUpdatedDate: Date;
+    totalHoursAcrossSnapshots: number;
 }
